@@ -30,3 +30,15 @@ module.exports.getOneProduct = (req, res) => {
 // controller {value}/routes pairing or the controller {key}/database pairing
 
 //front end being: Link to= .../:variable in App.js or view file has to match const {variable} = useParams() in component
+
+module.exports.updateProduct = (req, res) => {
+    Product.findOneAndUpdate({_id: req.params._id}, req.body, {new:true})
+        .then(updatedProduct => res.json(updatedProduct))
+        .catch(err => console.log(err))
+}
+
+module.exports.deleteProduct = (req, res) => {
+    Product.deleteOne({_id: req.params._id})
+        .then(deleteConf => res.json(deleteConf))
+        .catch(err => console.log(err))
+}
