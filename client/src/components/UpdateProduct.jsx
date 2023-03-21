@@ -18,11 +18,12 @@ const UpdateProduct = (props) => {
     }, [])
     const submitUpdate = (e) => {
         e.preventDefault();
-        axios.put('http://localhost:8000/api/products/' + _id, {
-            title: product.title,
-            price: product.price,
-            description: product.description
-        })
+        axios.put('http://localhost:8000/api/products/' + _id, product)
+        // {
+        //     title: product.title,
+        //     price: product.price,
+        //     description: product.description
+        // })
             .then(res => {
                 console.log(res);
                 console.log(product);
